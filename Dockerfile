@@ -1,19 +1,9 @@
-#FROM ubuntu:12.04
-
-#MAINTAINER Kimbro Staken version: 0.1
-
-#RUN apt-get update && apt-get install -y apache2 && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-#ENV APACHE_RUN_USER www-data
-#ENV APACHE_RUN_GROUP www-data
-#ENV APACHE_LOG_DIR /var/log/apache2
-#ARG WAR_FILE=target/*.war
-## COPY ${JAR_FILE} app.jar
-#COPY  target/*.war Onlinebookstore.war
-## RUN apk add --no-cache curl tar bash
-
-
-#EXPOSE 80
-
-#CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
-##ENTRYPOINT ["java","-jar","/app.jar"]
+FROM openjdk:8-jdk
+MAINTAINER hemantakumarpati
+ENV JAVA_VER 8
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+COPY . /var/lib/jenkins/workspace/java-poc/target/onlinebookstore.war
+WORKDIR /var/lib/jenkins/workspace/java-poc/target/
+ENTRYPOINT "java", "-jar", "/var/lib/jenkins/workspace/java-poc/target/onlinebookstore.war"
+EXPOSE 8000
+CMD "/usr/bin/java", "-jar", "onlinebookstore.war"
