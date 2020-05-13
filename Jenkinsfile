@@ -1,24 +1,44 @@
-pipeline{
-	agent any
-	environment{
-		PATH = "/usr/share/maven/bin:$PATH"
-	stages{
-		stage("Git Checkout"){
-			steps{
-				git credentialsId: 'gituser', url: 'https://github.com/Hemantakumarpati/LoginWebApp.git'
-				}
-			}
-	stage("Maven Build"){
-			steps{
-				sh "maven clean package"
-				}
-			}
-	stage("Docker Build"){
-			steps{
-				withDockerRegistry(credentialsId: 'dockeruser', url: 'hub.docker.com')
-				docker build -t hemamntakumarpati/onlinebookstore:latest .
-				echo "build successfully"
-				}
-			}
-	}
+pipeline {
+  environment {
+    registry = "hemantakumarpati/onlinebookstore"
+    registryCredential = 'dockeruser'
+    dockerImage = ''
+  }
+  agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/Hemantakumarpati/OnlineBookStore.git'
+      }
+    }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+    stage('Test OnlineBookStore' ) {
+                agent {
+                docker { image 'hemantakumarpati/onlinebookstore:$BUILD_NUMBER' }
+            }
+            steps {
+                sh 'docker --version'
+            }
+        }
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
+  }
 }
