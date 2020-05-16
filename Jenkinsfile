@@ -34,9 +34,9 @@ pipeline {
           //sh "docker login -u ${USERNAME} -p ${PASSWORD}"
           //dockerImage.push("$BUILD_NUMBER")
           //dockerImage.push("latest")
-          /home/hemant_pati/dockerpush.sh
-            }
-        }
+          sh /home/hemant_pati/dockerpush.sh
+            //}
+       // }
       }
     }
   }
