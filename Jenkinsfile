@@ -29,7 +29,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          withCredentials([usernamePassword( credentialsId: 'dockeruser', usernameVariable: 'hemantakumarpati', passwordVariable: 'Master@1927')]) {
+          withCredentials([usernamePassword( credentialsId: 'dockeruser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           docker.withRegistry('https://registry.hub.docker.com', 'dockeruser') {
           sh "docker login -u ${USERNAME} -p ${PASSWORD}"
           dockerImage.push("$BUILD_NUMBER")
