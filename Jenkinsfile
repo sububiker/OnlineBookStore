@@ -1,9 +1,9 @@
 pipeline {
-  //environment {
-    //registry = "hemantakumarpati/onlinebookstore"
-    //registryCredential = 'dockeruser'
-    //dockerImage = ''
- // }
+  environment {
+    registry = "hemantakumarpati/onlinebookstore"
+    registryCredential = 'dockeruser'
+    dockerImage = ''
+ }
   agent any
   stages {
     stage('Cloning Git') {
@@ -30,7 +30,7 @@ pipeline {
       steps{
         script {
           withCredentials([usernamePassword( credentialsId: 'dockeruser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-          docker.withRegistry('https://registry.hub.docker.com', 'dockeruser') {
+          docker.withRegistry('', 'dockeruser') {
           sh "docker login -u ${USERNAME} -p ${PASSWORD}"
           dockerImage.push("$BUILD_NUMBER")
           dockerImage.push("latest")
