@@ -32,7 +32,7 @@ pipeline {
           docker.withRegistry('https://registry.hub.docker.com', 'dockeruser') {
           //docker.withRegistry( '', registryCredential ) {
             dockerImage.push("$BUILD_NUMBER")
-            dockerImage.push("latest"
+            dockerImage.push("latest")
             }
         }
       }
