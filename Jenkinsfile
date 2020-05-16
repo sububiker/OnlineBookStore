@@ -1,9 +1,9 @@
 pipeline {
-  environment {
+  //environment {
     //registry = "hemantakumarpati/onlinebookstore"
     //registryCredential = 'dockeruser'
     //dockerImage = ''
-  }
+ // }
   agent any
   stages {
     stage('Cloning Git') {
