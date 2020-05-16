@@ -1,8 +1,8 @@
 pipeline {
   environment {
-    registry = "hemantakumarpati/onlinebookstore"
-    registryCredential = 'dockeruser'
-    dockerImage = ''
+    //registry = "hemantakumarpati/onlinebookstore"
+    //registryCredential = 'dockeruser'
+    //dockerImage = ''
   }
   agent any
   stages {
