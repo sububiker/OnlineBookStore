@@ -30,7 +30,7 @@ pipeline {
       steps{
         script {
           withCredentials([usernamePassword( credentialsId: 'dockeruser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-          docker.withRegistry('', 'dockeruser') {
+          docker.withRegistry('https://registry.hub.docker.com', 'dockeruser') {
           sh "docker login -u ${USERNAME} -p ${PASSWORD}"
           dockerImage.push("$BUILD_NUMBER")
           dockerImage.push("latest")
