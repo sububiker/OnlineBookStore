@@ -31,8 +31,9 @@ pipeline {
         script {
           docker.withRegistry('https://registry.hub.docker.com', 'dockeruser') {
           //docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-          }
+            dockerImage.push("$BUILD_NUMBER")
+            dockerImage.push("latest"
+            }
         }
       }
     }
