@@ -18,14 +18,6 @@ pipeline {
         }
       }
     }
-    stage('Test OnlineBookStore' ) {
-                agent {
-                docker { image 'hemantakumarpati/onlinebookstore:$BUILD_NUMBER' }
-            }
-            steps {
-                sh 'docker --version'
-            }
-        }
     stage('Deploy Image') {
       steps{
         script {
