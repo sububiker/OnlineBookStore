@@ -1,9 +1,10 @@
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jdk
 MAINTAINER hemantakumarpati
 ENV JAVA_VER 8
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
-WORKDIR . /var/lib/jenkins/workspace/Onlinebookstore-dockerized/target/
-COPY . /var/lib/jenkins/workspace/Onlinebookstore-dockerized/target/OnlineBookStore.war /OnlineBookStore.war
+COPY . /var/lib/jenkins/workspace/Onlinebookstore-dockerized/target/OnlineBookStore.war
+WORKDIR /var/lib/jenkins/workspace/Onlinebookstore-dockerized/target/
 ENTRYPOINT "java" "-jar", "/var/lib/jenkins/workspace/Onlinebookstore-dockerized/target/OnlineBookStore.war"
-CMD java -jar /OnlineBookStore.war
 EXPOSE 8000
+CMD java -jar OnlineBookStore.war
+CMD "/usr/bin/java" "-jar", "OnlineBookStore.war"
