@@ -6,5 +6,5 @@ COPY . /var/lib/jenkins/workspace/Onlinebookstore-dockerized/target/OnlineBookSt
 WORKDIR /var/lib/jenkins/workspace/Onlinebookstore-dockerized/target/
 ENTRYPOINT "java" , "-jar", "/OnlineBookStore.war"
 EXPOSE 8000
-CMD "java" , "-jar" "/OnlineBookStore.war"
+CMD ["java", "-jar" "OnlineBookStore.war"]
 CMD "/usr/bin/java" "-jar", "OnlineBookStore.war"
