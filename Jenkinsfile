@@ -32,7 +32,7 @@
          //bat "${tomcatBin}\\startup.bat"
          bat "C:\\Users\\heman\\Tomcat\\apache-tomcat-9.0.33-windows-x64\\apache-tomcat-9.0.33\\bin\\startup.bat"
          sleep(time:100,unit:"SECONDS")*/
-   }
+  /* }
 }*/
 
 pipeline {
