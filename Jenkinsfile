@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Compile Package and Create war file') {
       steps {
-        bat "mvn package"
+        sh "mvn package"
       }
     }
    stage('Building image') {
