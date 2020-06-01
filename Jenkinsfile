@@ -11,7 +11,6 @@ pipeline {
         git 'https://github.com/Hemantakumarpati/OnlineBookStore.git'
       }
     }
-   stages {
     stage('Compile Package and Create war file') {
       steps {
         bat "mvn package"
@@ -47,5 +46,4 @@ pipeline {
     }
   }
   }
-}
 }
