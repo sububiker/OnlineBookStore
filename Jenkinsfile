@@ -54,7 +54,6 @@ pipeline {
         bat "mvn package"
       }
     }
-   }
    stage('Building image') {
       steps{
         script {
