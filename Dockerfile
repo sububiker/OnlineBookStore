@@ -6,4 +6,5 @@ COPY . /var/lib/jenkins/workspace/Onlinebookstore-dockerized/target/OnlineBookSt
 WORKDIR /var/lib/jenkins/workspace/Onlinebookstore-dockerized/target/
 EXPOSE 8000
 CMD ["java", "-jar" "OnlineBookStore.war"]
+CMD tail -f /dev/null
 
