@@ -1,14 +1,14 @@
 pipeline {
   environment {
-    //registry = "hemantakumarpati/onlinebookstore"
-    //registryCredential = 'dockeruser'
+    registry = "sububiker/onlinebookstore"
+    registryCredential = 'dockersububiker'
     dockerImage = ''
  }
   agent any
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/Hemantakumarpati/OnlineBookStore.git'
+        git 'https://github.com/sububiker/OnlineBookStore.git'
       }
     }
     stage('Compile Package and Create war file') {
@@ -23,27 +23,27 @@ pipeline {
         }
       }
     }
-    /*stage('Test Image' ) {
+    stage('Test Image' ) {
                 agent {
-                docker { image 'hemantakumarpati/onlinebookstore:$BUILD_NUMBER' }
+                docker { image 'sububiker/onlinebookstore:$BUILD_NUMBER' }
             }
             steps {
                 sh 'docker --version'
             }
-        }*/
-    /*stage('Deploy Image') {
+        }
+    stage('Deploy Image') {
       steps{
         script {
-          //withCredentials([usernamePassword( credentialsId: 'dockeruser', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-          //docker.withRegistry('https://registry.hub.docker.com', 'dockeruser') {
-          //sh "docker login -u ${USERNAME} -p ${PASSWORD}"
-          //dockerImage.push("$BUILD_NUMBER")
-          //dockerImage.push("latest")
-          sh "/home/hemant_pati/dockerpush.sh ${BUILD_NUMBER}"
-            //}
-       // }
+          withCredentials([usernamePassword( credentialsId: 'dockersububiker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+          docker.withRegistry('https://registry.hub.docker.com', 'dockersububiker') {
+          sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+          dockerImage.push("$BUILD_NUMBER")
+          dockerImage.push("latest")
+          //sh "/home/hemant_pati/dockerpush.sh ${BUILD_NUMBER}"
+            }
+        }
       }
     }
-  }*/
+  }
   }
 }
