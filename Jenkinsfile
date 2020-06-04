@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             agent any
             steps {
+                git 'https://github.com/sububiker/OnlineBookStore.git'
                 checkout scm
             }
         }
