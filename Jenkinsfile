@@ -16,14 +16,16 @@ pipeline {
         sh "mvn package"
       }
     }
-   stage('Building image') {
+   stage('Building image') 
+    label 'dockerserver'{
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
-    stage('Test Image' ) {
+    stage('Test Image' )
+     label 'dockerserver'{
                 agent {
                 docker { image 'sububiker/onlinebookstore:$BUILD_NUMBER' }
             }
@@ -31,7 +33,8 @@ pipeline {
                 sh 'docker --version'
             }
         }
-    stage('Deploy Image') {
+    stage('Deploy Image') 
+     label 'dockerserver'{
       steps{
         script {
           withCredentials([usernamePassword( credentialsId: 'dockersububiker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
