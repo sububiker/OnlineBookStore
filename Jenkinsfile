@@ -17,13 +17,15 @@ pipeline {
         sh "mvn package"
       }
     }
-  }
-  agent {
+  
+    stage('docker-build')
+      agent {
       label 'dockerserver'
-       steps{
+      steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
+  }
 }
