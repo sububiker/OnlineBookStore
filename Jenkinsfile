@@ -1,11 +1,11 @@
 pipeline {
     agent none
     stages {
-        stage('Build') {
+        stage('Cloning Git') {
             agent any
             steps {
                 git 'https://github.com/sububiker/OnlineBookStore.git'
-                checkout scm
+                /*checkout scm */
             }
         }
         stage('Test on Linux') {
@@ -16,7 +16,7 @@ pipeline {
                 sh 'echo "Subrat"'
             }
         }
-        stage('Test on Windows') {
+        stage('Test on linux') {
             agent {
                 label 'dockerserver'
             }
