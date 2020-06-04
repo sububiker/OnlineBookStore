@@ -27,6 +27,7 @@ pipeline {
         }
       }
     }
+    }
    /* stage('Test Image' )
         agent {
                 label ("dockerserver")
@@ -38,7 +39,7 @@ pipeline {
                 sh 'docker --version'
             }
         }*/
-      stage('Deploy Image') {
+       /*  stage('Deploy Image') {
        agent {
                 label ("dockerserver")
        } 
@@ -55,7 +56,6 @@ pipeline {
         }
       }
     }
+  }*/
   }
-  }
-}
 }
