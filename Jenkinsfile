@@ -1,4 +1,9 @@
 pipeline {
+  environment {
+    registry = "sububiker/onlinebookstore"
+    registryCredential = 'dockersububiker'
+    dockerImage = ''
+ }
     agent none
     stages {
         stage('Cloning Git') {
@@ -6,17 +11,19 @@ pipeline {
             steps {
                 git 'https://github.com/sububiker/OnlineBookStore.git'
                 /*checkout scm */
+                sh 'mvn package'
             }
         }
-        stage('Test on Linux') {
+        stage('docker build in Linux') {
             agent { 
                 label 'dockerserver'
             }
             steps {
                 sh 'echo "Subrat"'
+                dockerImage = docker.build registry + ":$BUILD_NUMBER"
             }
         }
-        stage('Test on linux') {
+        stage('docker push on linux') {
             agent {
                 label 'dockerserver'
             }
