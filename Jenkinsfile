@@ -4,13 +4,14 @@ pipeline {
     registryCredential = 'dockersububiker'
     dockerImage = ''
  }
-  agent any
+  agent any{
   stages {
     stage('Cloning Git') {
       steps {
         git 'https://github.com/sububiker/OnlineBookStore.git'
       }
     }
+  }
     stage('Compile Package and Create war file') {
       steps {
         sh "mvn package"
