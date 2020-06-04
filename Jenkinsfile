@@ -11,12 +11,13 @@ pipeline {
         git 'https://github.com/sububiker/OnlineBookStore.git'
       }
     }
-  }
+  
     stage('Compile Package and Create war file') {
       steps {
         sh "mvn package"
       }
     }
+  }
   agent {
       label 'dockerserver'
        steps{
@@ -25,6 +26,4 @@ pipeline {
         }
       }
     }
-
-}
 }
