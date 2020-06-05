@@ -11,7 +11,7 @@ CMD tail -f /dev/null
 
 FROM tomcat:8.0.43-jre8
 #ADD /home/app/target/OnlineBookStore.war /usr/local/tomcat/webapps/
-COPY --from=openjdk /home/app/target/OnlineBookStore.war /usr/local/tomcat/webapps/
+COPY --from=openjdk /home/app/target/ /usr/local/tomcat/webapps/
 #ADD server.xml /usr/local/tomcat/conf/
 EXPOSE 8090
 CMD chmod +x /usr/local/tomcat/bin/catalina.sh
