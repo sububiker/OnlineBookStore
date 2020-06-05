@@ -11,7 +11,7 @@ pipeline {
             steps {
                 git 'https://github.com/sububiker/OnlineBookStore.git'
                 /*checkout scm */
-                sh 'mvn package'
+                /*sh 'mvn package'*/
             }
         }
         stage('docker build in Linux') {
@@ -20,6 +20,7 @@ pipeline {
             }
             steps {
                 sh 'echo "Subrat"'
+                sh 'mvn package'
                        script {
                           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
