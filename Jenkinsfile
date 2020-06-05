@@ -20,7 +20,7 @@ pipeline {
             }
             steps {
                 sh 'echo "Subrat"'
-                sh 'mvn package'
+                /*sh 'mvn package'*/
                        script {
                           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
@@ -32,6 +32,7 @@ pipeline {
             }
             steps {
                 sh 'docker images' 
+                sh 'docker run -d -p 8888:8888 sububiker/onlinebookstore --name onlinebookstore'
             }
         }
     }
