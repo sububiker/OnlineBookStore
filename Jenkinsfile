@@ -9,9 +9,9 @@ pipeline {
         stage('Cloning Git') {
             agent any
             steps {
-                git 'https://github.com/sububiker/OnlineBookStore.git'
+                /*git 'https://github.com/sububiker/OnlineBookStore.git'*/
                 /*checkout scm */
-                /*sh 'mvn package'*/
+                sh 'echo subrat'
             }
         }
         stage('docker build in Linux') {
@@ -20,6 +20,8 @@ pipeline {
             }
             steps {
                 sh 'echo "Subrat"'
+                git 'https://github.com/sububiker/OnlineBookStore.git'
+                checkout scm
                 /*sh 'mvn package'*/
                        script {
                           dockerImage = docker.build registry + ":$BUILD_NUMBER"
