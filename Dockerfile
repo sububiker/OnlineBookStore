@@ -1,8 +1,8 @@
 FROM tomcat:8.0.43-jre8
 MAINTAINER Subrat
 #ADD /home/subrat/workspace/onlinebookstorepipeline/target/OnlineBookStore.war /usr/local/tomcat/webapps/
-workdir /home/subrat/workspace/onlinebookstorepipeline/target/
-COPY ./OnlineBookStore.war /usr/local/tomcat/webapps/
+#workdir /home/subrat/workspace/onlinebookstorepipeline/target/
+#COPY ./OnlineBookStore.war /usr/local/tomcat/webapps/
 #ADD server.xml /usr/local/tomcat/conf/
 
 RUN mkdir /home/app
