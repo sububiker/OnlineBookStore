@@ -34,7 +34,7 @@ pipeline {
             }
             steps {
                 sh 'docker images' 
-                sh 'docker run -d -p 8888:8888 --name onlinebookstore sububiker/onlinebookstore'
+                sh 'docker run -d -p 8888:8888 --name onlinebookstore sububiker/onlinebookstore:73'
             }
         }
     }
