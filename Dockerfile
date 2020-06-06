@@ -7,7 +7,7 @@ MAINTAINER Subrat
 
 RUN mkdir /home/app
 WORKDIR /home/app
-COPY . /usr/local/tomcat/webapps/
+COPY ./target/ /usr/local/tomcat/webapps/
 EXPOSE 8090
 CMD chmod +x /usr/local/tomcat/bin/catalina.sh
 CMD ["catalina.sh", "run"]
