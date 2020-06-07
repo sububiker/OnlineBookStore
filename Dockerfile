@@ -13,4 +13,4 @@ CMD chmod +x /usr/local/tomcat/bin/catalina.sh
 CMD ["catalina.sh", "run"]
 
 FROM nginx:alpine
-COPY --from=tomcat /home/app/target/ /usr/share/nginx/html
+COPY --from=tomcat . /usr/share/nginx/html
