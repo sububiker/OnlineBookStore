@@ -11,3 +11,6 @@ COPY ./target/*.war /usr/local/tomcat/webapps/
 EXPOSE 8080
 CMD chmod +x /usr/local/tomcat/bin/catalina.sh
 CMD ["catalina.sh", "run"]
+
+FROM nginx:alpine
+COPY --from=tomcat /home/app/target/ /usr/share/nginx/html
