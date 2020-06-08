@@ -12,5 +12,5 @@ EXPOSE 80
 CMD chmod +x /usr/local/tomcat/bin/catalina.sh
 CMD ["catalina.sh", "run"]
 
-FROM nginx:alpine
-COPY --from=tomcat . /usr/share/nginx/html
+#FROM nginx:alpine
+#COPY --from=tomcat . /usr/share/nginx/html
